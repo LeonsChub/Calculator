@@ -16,7 +16,6 @@ const operate = function(num1,num2,o){
     num1 = parseFloat(num1);
     num2 = parseFloat(num2);
     
-
     if(o === '+'){
         return add(num1,num2)
     }
@@ -54,6 +53,16 @@ for(let btn of btns){
         else{
             
             if(btn.id === "plus" || btn.id === "minus" || btn.id === "times" || btn.id === "divide"){
+   
+                if(last_val === "" || output_val ==="") {
+                    last_val = output_val;
+                    output_val = "";
+                }
+                else{
+                    last_val = operate(last_val,output_val,operand);
+                    result.textContent = last_val;
+                    output_val = ""; 
+                }
                 
                 switch(btn.id) {
                     case "plus":
@@ -73,11 +82,8 @@ for(let btn of btns){
                         break;
                     
                 }
-               
-                last_val = output_val;
-                output_val = "";
-                
-                   
+
+                                  
             }
             else{   
                switch(btn.id) {
@@ -85,11 +91,11 @@ for(let btn of btns){
                         ans = operate(last_val,output_val,operand);
                         output_val = ans;
                         result.textContent = ans;
-                        
                         break;
 
                     case "clear":
                         output_val = "";
+                        last_val = "";
                         result.textContent = output_val;
                         break;
 
