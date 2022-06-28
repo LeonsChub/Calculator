@@ -13,8 +13,8 @@ const multiply = function(num1,num2){
 };
 
 const operate = function(num1,num2,o){
-    num1 = parseInt(num1);
-    num2 = parseInt(num2);
+    num1 = parseFloat(num1);
+    num2 = parseFloat(num2);
     
 
     if(o === '+'){
@@ -34,23 +34,17 @@ const operate = function(num1,num2,o){
     }
 }
 
-const quickUpdate = function(){
-    ans = operate(last_val,output_val,operand);//answer
-    output_val = ans;
-    result.textContent = ans;
-    
-}
 const btns = document.querySelectorAll("button");
 const result = document.querySelector(".output");
 
 let output_val = "";
-let last_val = "";
-let operand = ""
+let last_val   = "";
+let operand    = "";
 
 
 for(let btn of btns){
     btn.addEventListener("click",()=>{
-
+    
         if(parseInt(btn.id)<10){
 
             output_val+=btn.id;
@@ -60,10 +54,6 @@ for(let btn of btns){
         else{
             
             if(btn.id === "plus" || btn.id === "minus" || btn.id === "times" || btn.id === "divide"){
-                last_val = output_val;
-                output_val = "";
-                result.textContent = output_val;
-
                 
                 switch(btn.id) {
                     case "plus":
@@ -81,25 +71,35 @@ for(let btn of btns){
                     case "times":    
                         operand = "x";
                         break;
-                   }
+                    
                 }
+               
+                last_val = output_val;
+                output_val = "";
                 
-                else{   
-                    switch(btn.id) {
-                        case "=":
-                            quickUpdate();
-                            break;
-
-                        case "clear":
-                            output_val = "";
-                            result.textContent = output_val;
-                            break;
-                        }
-                
-                }
-            console.log("current value",output_val);
-            console.log("previous value",last_val);
-            
+                   
             }
+            else{   
+               switch(btn.id) {
+                    case "=":
+                        ans = operate(last_val,output_val,operand);
+                        output_val = ans;
+                        result.textContent = ans;
+                        
+                        break;
+
+                    case "clear":
+                        output_val = "";
+                        result.textContent = output_val;
+                        break;
+
+                }
+                
+            }
+
+            
+        }
+        console.log("current value",output_val);
+        console.log("previous value",last_val);
     });
 }
