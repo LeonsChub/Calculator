@@ -53,17 +53,20 @@ for(let btn of btns){
         else{
             
             if(btn.id === "plus" || btn.id === "minus" || btn.id === "times" || btn.id === "divide"){
-   
-                if(last_val === "" || output_val ==="") {
+
+                if(last_val === ""){
                     last_val = output_val;
+                    result.textContent = output_val;
                     output_val = "";
                 }
                 else{
                     last_val = operate(last_val,output_val,operand);
                     result.textContent = last_val;
-                    output_val = ""; 
-                }
-                
+
+                    output_val = "";
+
+                } 
+
                 switch(btn.id) {
                     case "plus":
                         operand = "+";
@@ -82,27 +85,25 @@ for(let btn of btns){
                         break;
                     
                 }
-
-                                  
             }
             else{   
                switch(btn.id) {
                     case "=":
-                        ans = operate(last_val,output_val,operand);
-                        output_val = ans;
-                        result.textContent = ans;
+                        if(last_val !== "" && output_val !== ""){
+                            ans = operate(last_val,output_val,operand);
+                            output_val = ans;
+                            last_val = "";
+                        }
                         break;
 
                     case "clear":
                         output_val = "";
-                        last_val = "";
-                        result.textContent = output_val;
+
                         break;
 
                 }
-                
+                result.textContent = output_val;
             }
-
             
         }
         console.log("current value",output_val);
