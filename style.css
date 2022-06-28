@@ -59,6 +59,8 @@ button{
 
     border: 0.1em black solid;
     border-radius: 0.5em;
+
+    background-color: beige;
 }
 
 button#plus,

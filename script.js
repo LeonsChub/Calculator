@@ -106,17 +106,22 @@ for(let btn of btns){
                         break;
 
                     case "clear":
-                        output_val = "";
+                        output_val = "0";
+                        last_val="";
+
+
                         break;
                     
                     case "backspace":
                         output_val = output_val.slice(0,-1);
+                        break;
                     
                     case "dot":
                         if(!output_val.includes(".")){
                             output_val += ".";
                             result.textContent = output_val;
-                        }       
+                        } 
+                        break;      
                 }
 
                 if (output_val === Infinity){
@@ -131,3 +136,12 @@ for(let btn of btns){
         }
     });
 }
+
+document.addEventListener('keypress',(event) =>{
+    let name = event.key;
+
+    if(parseInt(name) < 10){
+        output_val+=name;
+        result.textContent = output_val;
+    } 
+})
