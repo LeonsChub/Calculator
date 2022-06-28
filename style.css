@@ -51,4 +51,14 @@ button{
     flex: 1 1 20%;
     height: 75px;
     font-size: 2rem;
+
+    border-radius: 0.3em;
+}
+
+button#plus,
+button#minus,
+button#times,
+button#divide{
+    background-color: orange;
+    color: black;
 }

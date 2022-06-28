@@ -34,6 +34,12 @@ const operate = function(num1,num2,o){
     }
 }
 
+const quickUpdate = function(){
+    ans = operate(last_val,output_val,operand);//answer
+    output_val = ans;
+    result.textContent = ans;
+    
+}
 const btns = document.querySelectorAll("button");
 const result = document.querySelector(".output");
 
@@ -52,51 +58,45 @@ for(let btn of btns){
         }
 
         else{
+            
+            if(btn.id === "plus" || btn.id === "minus" || btn.id === "times" || btn.id === "divide"){
+                last_val = output_val;
+                output_val = "";
+                result.textContent = output_val;
 
-            switch(btn.id) {
-                case "plus":
-                  operand = "+";
-                  last_val = output_val;
-                  output_val = "";
-                  result.textContent = output_val;
+                
+                switch(btn.id) {
+                    case "plus":
+                        operand = "+";
+                        break;
 
-                  break;
+                    case "minus":
+                        operand = "-";
+                        break;
 
-                case "minus":
+                    case "divide":
+                        operand = "/";
+                        break;
 
-                  operand = "-";
-                  last_val = output_val;
-                  output_val = "";
-                  result.textContent = output_val;
-                  break;
+                    case "times":    
+                        operand = "x";
+                        break;
+                   }
+                }
+                
+                else{   
+                    switch(btn.id) {
+                        case "=":
+                            quickUpdate();
+                            break;
 
-                case "divide":
-
-                  operand = "/";
-                  last_val = output_val;
-                  output_val = "";
-                  result.textContent = output_val;
-                  break;
-
-                case "times":
-                    
-                    operand = "x";
-                    last_val = output_val;
-                    output_val = "";
-                    result.textContent = output_val;
-                    break;
-
-                case "=":
-                    ans = operate(last_val,output_val,operand);//answer
-                    result.textContent = ans;
-
-                    break;
-
-                case "clear":
-                    output_val = "";
-                    result.textContent = output_val;
-                    break;
-              }
+                        case "clear":
+                            output_val = "";
+                            result.textContent = output_val;
+                            break;
+                        }
+                
+                }
             console.log("current value",output_val);
             console.log("previous value",last_val);
             
