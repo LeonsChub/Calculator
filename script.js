@@ -59,7 +59,7 @@ for(let btn of btns){
 
                 if(last_val === ""){
                     last_val = output_val;
-                    result.textContent = roundToThree(output_val);
+                    result.textContent = output_val;
                     output_val = "";
                 }
                 else{
@@ -111,13 +111,19 @@ for(let btn of btns){
                     
                     case "backspace":
                         output_val = output_val.slice(0,-1);
-
+                    
+                    case "dot":
+                        if(!output_val.includes(".")){
+                            output_val += ".";
+                            result.textContent = output_val;
+                        }       
                 }
+
                 if (output_val === Infinity){
                     result.textContent = "lmao";
                 }
                 else{
-                    result.textContent = roundToThree(output_val);
+                    result.textContent = output_val;
                 }
                 
             }

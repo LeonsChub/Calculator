@@ -21,20 +21,25 @@ h1{
 
 .calculator{
     background-color: gray;
-    width: 360px;
-    height: 580px;
-    padding: 1em;
+    width: 400px;
+    height: 600px;
+    padding: 2em;
 
     display: flex;
     flex-flow: column;
+
+    border-radius: 1em;
 }
 
 .output{
     font-size: 2em;
     height: 3em;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    color: green;
     margin-bottom: 2em;
     margin-top: 0.5em;
+
+    border-radius: 0.5em;
 
     display: flex;
     align-items: center;
@@ -48,9 +53,11 @@ h1{
     justify-content: space-evenly;
 }
 button{
-    flex: 1 1 65px;
-    height: 65px;
+    flex: 1 1 70px;
+    height: 70px;
     font-size: 2rem;
+
+    border: 0.1em black solid;
     border-radius: 0.5em;
 }
 
@@ -63,7 +70,7 @@ button#divide{
 }
 
 button.double-space{
-    flex: 2 1 146px;
+    flex: 2 1 156px;
     height: 65px;
     font-size: 2rem;
     border-radius: 0.5em;
