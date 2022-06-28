@@ -1,3 +1,7 @@
+function roundToThree(number){
+    return Math.round(number * 1000)/1000
+}
+
 const add = function(num1,num2){ 
     return num1 + num2;
 };
@@ -5,7 +9,6 @@ const subtract = function(num1,num2){
     return num1 - num2;
 };
 const divide = function(num1,num2){
-
     return num1 / num2;
 };
 const multiply = function(num1,num2){
@@ -47,7 +50,7 @@ for(let btn of btns){
         if(parseInt(btn.id)<10){
 
             output_val+=btn.id;
-            result.textContent = output_val;
+            result.textContent = roundToThree(output_val);
         }
 
         else{
@@ -56,13 +59,19 @@ for(let btn of btns){
 
                 if(last_val === ""){
                     last_val = output_val;
-                    result.textContent = output_val;
+                    result.textContent = roundToThree(output_val);
                     output_val = "";
                 }
                 else{
                     last_val = operate(last_val,output_val,operand);
-                    result.textContent = last_val;
 
+                    if(last_val === Infinity){
+                        result.textContent = "Lmao";
+                    }
+                    else{
+                        result.textContent = roundToThree(last_val);
+                    }
+                    
                     output_val = "";
 
                 } 
@@ -98,15 +107,21 @@ for(let btn of btns){
 
                     case "clear":
                         output_val = "";
-
                         break;
+                    
+                    case "backspace":
+                        output_val = output_val.slice(0,-1);
 
                 }
-                result.textContent = output_val;
+                if (output_val === Infinity){
+                    result.textContent = "lmao";
+                }
+                else{
+                    result.textContent = roundToThree(output_val);
+                }
+                
             }
             
         }
-        console.log("current value",output_val);
-        console.log("previous value",last_val);
     });
 }

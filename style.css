@@ -22,7 +22,7 @@ h1{
 .calculator{
     background-color: gray;
     width: 360px;
-    height: 540px;
+    height: 580px;
     padding: 1em;
 
     display: flex;
@@ -48,8 +48,8 @@ h1{
     justify-content: space-evenly;
 }
 button{
-    flex: 1 1 20%;
-    height: 75px;
+    flex: 1 1 65px;
+    height: 65px;
     font-size: 2rem;
     border-radius: 0.5em;
 }
@@ -60,4 +60,14 @@ button#times,
 button#divide{
     background-color: orange;
     color: black;
+}
+
+button.double-space{
+    flex: 2 1 146px;
+    height: 65px;
+    font-size: 2rem;
+    border-radius: 0.5em;
+}
+button#clear{
+    background-color: rgb(255, 115, 115);
 }
