@@ -79,18 +79,26 @@ for(let btn of btns){
                 switch(btn.id) {
                     case "plus":
                         operand = "+";
+                        result.textContent = "+"
+
                         break;
 
                     case "minus":
                         operand = "-";
+                        result.textContent = "-"
+
                         break;
 
                     case "divide":
                         operand = "/";
+                        result.textContent = "/"
+
                         break;
 
                     case "times":    
                         operand = "x";
+                        result.textContent = "x"
+
                         break;
                     
                 }
